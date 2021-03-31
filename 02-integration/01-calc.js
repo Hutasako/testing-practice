@@ -5,6 +5,10 @@ function calc(op, a, b=0) {
   switch(op){
     case "add":
       return a+b
+    case "subtract":
+      return a-b
+    case "multiply":
+      return a*b
 
   }
 }
