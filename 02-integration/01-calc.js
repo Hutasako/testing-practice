@@ -4,12 +4,34 @@
 function calc(op, a, b=0) {
   switch(op){
     case "add":
-      return a+b
+      if (a){
+        return a+b
+      }
+      return 0
     case "subtract":
-      return a-b
+      if (a){
+        return a-b
+      }
+      return 0
     case "multiply":
-      return a*b
-
+      if (a){
+        if (!b){
+          return a
+        }
+        return a*b
+      }
+      return 0
+    case "divide":
+      if (a){
+        if (!b){
+          // throw new Error('Error: Divide by 0')
+          return 'ERROR'
+        }
+        return a/b
+      }
+      return 0
+    default:
+      return "Operation not supported."
   }
 }
 
@@ -28,11 +50,15 @@ try {
   // Test Case 2
   // --------------------------------------------------
   // It should return the correct difference when the user provides: 'subtract', 20, 10.
+  var result = calc('subtract', 20, 10);
+  if (result !== 10) throw new Error('Expected calc("subtract", 20, 10) to be 10. Received: ' + result);
 
   // --------------------------------------------------
   // Test Case 3
   // --------------------------------------------------
   // It should return the correct product when the user provides: 'multiply', 9, 9.
+  var result = calc('multiply', 9, 9);
+  if (result !== 81) throw new Error('Expected calc("multiply", 9, 9) to be 81. Received: ' + result);
 
   // --------------------------------------------------
   // Test Case 4
